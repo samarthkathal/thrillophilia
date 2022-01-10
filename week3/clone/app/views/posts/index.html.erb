@@ -5,10 +5,12 @@
 </br>
 
 
+
+
 <div class="container">
   <div class="row">
     <div class="col-8">
-      <% @posts.each do |post| %>
+      <% Post.order(cached_votes_up: :desc).each do |post| %>
         <div class="card text-center">
           <div class="card-body">
             <h5 class="card-title">
@@ -33,9 +35,11 @@
 
                     <%= link_to dislike_post_path(post), method: :put, class: "btn btn-default btn-sm" do %>
                       <span class="glyphicon glyphicon-chevron-up"></span>
-                      Upvote
+                      downvote
                       <%= post.get_downvotes.size %>
                     <% end %>
+
+
                     
 
           </div>
