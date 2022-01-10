@@ -1,0 +1,50 @@
+<h1>Posts</h1>
+
+</br>
+</br>
+</br>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <% @posts.each do |post| %>
+        <div class="card text-center">
+          <div class="card-body">
+            <h5 class="card-title">
+              <%= post.title %>
+            </h5>
+
+            <p class="card-text">
+              <%= post.description %>
+            </p>
+            
+            <%= link_to "Expand", post, class: "btn btn-primary" %>
+
+          </div>
+
+          <div class="card-footer text-muted">
+            author: <%= post.user.email %> 
+            votes:  <%= link_to like_post_path(post), method: :put, class: "btn btn-default btn-sm" do %>
+                      <span class="glyphicon glyphicon-chevron-up"></span>
+                      Upvote
+                      <%= post.get_upvotes.size %>
+                    <% end %>
+
+                    <%= link_to dislike_post_path(post), method: :put, class: "btn btn-default btn-sm" do %>
+                      <span class="glyphicon glyphicon-chevron-up"></span>
+                      Upvote
+                      <%= post.get_downvotes.size %>
+                    <% end %>
+                    
+
+          </div>
+        </div>
+
+        </br></hr>
+
+        <% end %>
+    </div>
+  </div>
+</div>
+
